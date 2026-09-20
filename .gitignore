@@ -1,0 +1,22 @@
+node_modules
+.next
+out
+.DS_Store
+**/.DS_Store
+*.log
+.env
+.env*.local
+tsconfig.tsbuildinfo
+.vercel
+
+# material local de trabalho — não vai para o GitHub
+CONTINUAR-AQUI.md
+DOCUMENTO-MESTRE.md
+PEDIDOS-ROBERTO.md
+Copy/
+Efeitos/
+IMG/
+Memoria.RAG/
+Prompts-EXECUCAO/
+Referencias/
+skils/
