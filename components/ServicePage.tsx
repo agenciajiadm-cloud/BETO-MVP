@@ -15,19 +15,19 @@ export function ServicePage({ eyebrow, title, lead, reads, leaves }: Props) {
   return (
     <>
       <Header />
-      <main className="bg-cinza pt-[var(--header-h)]">
-        <section className="container-rm grid items-center gap-12 py-16 md:grid-cols-2">
+      <main className="relative pt-[var(--header-h)]">
+        <section className="container-rm grid items-center gap-16 py-20 md:grid-cols-2">
           <div>
-            <p className="text-sm font-medium text-petroleo">{eyebrow}</p>
-            <h1 className="mt-3 text-4xl font-semibold tracking-tight md:text-5xl">
+            <p className="text-sm font-medium tracking-[-0.02em] text-petroleo">{eyebrow}</p>
+            <h1 className="mt-8 text-4xl font-medium leading-[1.08] tracking-[-0.02em] md:text-5xl">
               {title}
             </h1>
-            <p className="mt-4 max-w-md text-mute">{lead}</p>
+            <p className="mt-5 max-w-md leading-relaxed text-mute">{lead}</p>
             <a
               href={LINKEDIN}
               target="_blank"
               rel="noreferrer"
-              className="mt-8 inline-flex bg-petroleo px-4 py-2 text-sm text-branco"
+              className="btn-pill btn-fill mt-10"
             >
               Conversar
             </a>
@@ -35,33 +35,33 @@ export function ServicePage({ eyebrow, title, lead, reads, leaves }: Props) {
           <img
             src="/roberto.jpg"
             alt="Roberto Machado"
-            className="aspect-[4/3] w-full object-cover object-top"
+            className="aspect-[4/3] w-full rounded-[10px] border border-[var(--hairline)] object-cover object-top"
           />
         </section>
-        <section className="container-rm grid gap-12 pb-20 md:grid-cols-2">
+        <section className="container-rm grid gap-16 pb-24 md:grid-cols-2">
           <div>
-            <p className="text-sm font-medium text-petroleo">O que eu leio</p>
-            <ul className="mt-4 space-y-3">
+            <p className="text-sm font-medium tracking-[-0.02em] text-petroleo">O que eu leio</p>
+            <ul className="mt-5 space-y-3">
               {reads.map((item) => (
-                <li key={item} className="border-b border-black/10 pb-3">
+                <li key={item} className="border-b border-[var(--hairline)] pb-3">
                   {item}
                 </li>
               ))}
             </ul>
           </div>
           <div>
-            <p className="text-sm font-medium text-petroleo">O que sai do trabalho</p>
-            <ul className="mt-4 space-y-3">
+            <p className="text-sm font-medium tracking-[-0.02em] text-petroleo">O que sai do trabalho</p>
+            <ul className="mt-5 space-y-3">
               {leaves.map((item) => (
-                <li key={item} className="border-b border-black/10 pb-3">
+                <li key={item} className="border-b border-[var(--hairline)] pb-3">
                   {item}
                 </li>
               ))}
             </ul>
           </div>
         </section>
-        <section className="container-rm pb-16">
-          <Link href="/#trabalhar" className="text-sm text-petroleo underline">
+        <section className="container-rm pb-20">
+          <Link href="/#trabalhar" className="text-sm tracking-[-0.02em] text-petroleo hover:opacity-70">
             Voltar para a história
           </Link>
         </section>

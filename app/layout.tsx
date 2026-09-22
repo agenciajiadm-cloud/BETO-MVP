@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Source_Sans_3 } from "next/font/google";
+import { Atmosphere } from "@/components/Atmosphere";
 import "./globals.css";
 
 const sans = Source_Sans_3({
@@ -20,7 +21,10 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="pt-BR">
-      <body className={`${sans.variable} font-sans antialiased`}>{children}</body>
+      <body className={`${sans.variable} font-sans antialiased`}>
+        <Atmosphere />
+        <div className="relative z-10">{children}</div>
+      </body>
     </html>
   );
 }

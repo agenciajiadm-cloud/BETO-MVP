@@ -16,12 +16,21 @@ export function Header() {
 
   return (
     <header className="pointer-events-none fixed inset-x-0 top-0 z-50">
-      <div className="pointer-events-auto bg-transparent text-preto md:bg-petroleo md:text-branco">
-        <div className="container-rm flex h-12 items-center justify-between md:h-[4.5rem]">
+      <div className="pointer-events-auto bg-transparent text-preto md:border-b md:border-branco/15 md:bg-petroleo md:text-branco">
+        <div className="container-rm flex h-12 items-center justify-between md:h-16">
           <Link
-            href="/"
-            onClick={close}
-            className="text-[20px] font-semibold leading-none tracking-tight md:text-[26px]"
+            href="/#negocio"
+            onClick={(e) => {
+              close();
+              if (typeof window === "undefined") return;
+              if (window.location.pathname !== "/") return;
+              e.preventDefault();
+              if (window.location.hash !== "#negocio") {
+                history.replaceState(null, "", "#negocio");
+              }
+              window.dispatchEvent(new HashChangeEvent("hashchange"));
+            }}
+            className="text-[20px] font-medium leading-none tracking-[-0.02em] md:text-[22px]"
           >
             <span className="md:hidden">BETO</span>
             <span className="hidden md:inline">Roberto Machado</span>
@@ -29,7 +38,7 @@ export function Header() {
 
           <button
             type="button"
-            className="flex h-10 w-10 items-center justify-center"
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-current/35"
             aria-label={open ? "Fechar menu" : "Abrir menu"}
             aria-expanded={open}
             onClick={() => setOpen((v) => !v)}
@@ -51,8 +60,8 @@ export function Header() {
       </div>
 
       {open && (
-        <nav className="pointer-events-auto bg-branco text-preto shadow-sm md:bg-fundo md:text-branco">
-          <div className="container-rm flex flex-col gap-4 py-5 text-[15px] md:items-end md:py-6 md:text-[16px]">
+        <nav className="pointer-events-auto border-t border-black/10 bg-branco text-preto md:border-branco/15 md:bg-fundo md:text-branco">
+          <div className="container-rm flex flex-col gap-5 py-8 text-[15px] tracking-[-0.02em] md:items-end md:py-10 md:text-[16px]">
             {links.map((item) =>
               item.href.startsWith("/") && !item.href.includes("#") ? (
                 <Link
@@ -79,7 +88,7 @@ export function Header() {
               target="_blank"
               rel="noreferrer"
               onClick={close}
-              className="w-fit bg-petroleo px-3 py-1.5 text-[13px] text-branco md:bg-branco md:text-petroleo"
+              className="btn-pill btn-ghost w-fit"
             >
               Conversar
             </a>

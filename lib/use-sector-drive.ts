@@ -153,6 +153,18 @@ export function useSectorDrive(reduce: boolean) {
       const link = (e.target as HTMLElement | null)?.closest("a");
       if (!link) return;
       const href = link.getAttribute("href") || "";
+      const url = new URL(href, window.location.origin);
+      const homeSlug = quadrants[0]?.slug ?? "negocio";
+      const isHomeReset =
+        url.pathname === "/" &&
+        (url.hash === "" || url.hash === "#" || url.hash === `#${homeSlug}`);
+
+      if (isHomeReset && window.location.pathname === "/") {
+        e.preventDefault();
+        go(0, 0);
+        return;
+      }
+
       if (!href.includes("#")) return;
       const slug = href.split("#")[1];
       if (!quadrants.some((q) => q.slug === slug)) return;

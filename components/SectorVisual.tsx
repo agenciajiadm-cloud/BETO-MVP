@@ -1,6 +1,6 @@
 "use client";
 
-import { sectorStageImage } from "@/lib/story";
+import { KenneyStage } from "./KenneyStage";
 
 type Props = {
   sectorId: number;
@@ -8,25 +8,28 @@ type Props = {
   onPick: (n: number) => void;
 };
 
+function cardRole(index: number, stage: number) {
+  if (index < stage) return "is-gone";
+  if (index === stage) return "is-front";
+  if (index === stage + 1) return "is-next";
+  return "is-last";
+}
+
 export function SectorVisual({ sectorId, stage, onPick }: Props) {
   return (
-    <div>
-      <div className="mt-8 flex w-full flex-1 items-center justify-center md:mt-0 md:hidden md:flex-none">
-        <div key={stage} className="sector-cell is-on stage-in aspect-square w-[min(78vw,22rem)]">
-          <img src={sectorStageImage(sectorId, stage)} alt="" />
-        </div>
-      </div>
-
-      <div className="sector-frame hidden md:grid">
+    <div className="card-scene" aria-label={`Construção, etapa ${stage + 1} de 3`}>
+      <div className="card-stack">
         {[0, 1, 2].map((n) => (
           <button
             key={n}
             type="button"
-            onClick={() => onPick(n)}
-            className={`sector-cell aspect-[4/5] ${n === stage ? "is-on" : ""}`}
+            className={`stack-card ${cardRole(n, stage)}`}
             aria-label={`Etapa ${n + 1}`}
+            aria-pressed={n === stage}
+            tabIndex={n < stage ? -1 : 0}
+            onClick={() => onPick(n)}
           >
-            <img src={sectorStageImage(sectorId, n)} alt="" />
+            <KenneyStage sectorId={sectorId} stage={n} />
           </button>
         ))}
       </div>

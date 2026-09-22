@@ -9,8 +9,8 @@ const config: Config = {
         fundo: "#071920",
         preto: "#0A0A0A",
         branco: "#FFFFFF",
-        cinza: "#E6E8EA",
-        mute: "#6B7378",
+        cinza: "#EDEBE7",
+        mute: "#4E6A72",
       },
       fontFamily: {
         sans: ["var(--font-sans)", "system-ui", "sans-serif"],

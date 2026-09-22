@@ -17,11 +17,11 @@ export function Experience() {
     return (
       <>
         <Header />
-        <main className="bg-cinza pt-[var(--header-h)]">
+        <main className="pt-[var(--header-h)]">
           {quadrants.map((q) => (
-            <section key={q.slug} id={q.slug} className="container-rm py-16">
-              <h2 className="text-3xl font-semibold">{q.name}</h2>
-              <p className="mt-3 text-xl">{q.stages[0].title}</p>
+            <section key={q.slug} id={q.slug} className="container-rm py-20">
+              <h2 className="text-3xl font-medium tracking-[-0.02em]">{q.name}</h2>
+              <p className="mt-5 text-xl font-medium tracking-[-0.02em]">{q.stages[0].title}</p>
               <p className="mt-2 text-mute">{q.stages[0].body}</p>
             </section>
           ))}
@@ -58,19 +58,19 @@ export function Experience() {
                 {q.mode === "talk" ? (
                   <TalkSector quadrant={q} index={qi} stage={localStage} />
                 ) : (
-                  <div className="container-rm flex h-full flex-col items-center px-5 pb-8 pt-14 text-center md:grid md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] md:items-center md:gap-10 md:px-0 md:py-10 md:text-left">
+                  <div className="container-rm flex h-full flex-col items-center justify-center px-5 pb-10 pt-[calc(var(--header-h)+1.25rem)] text-center md:grid md:grid-cols-[minmax(0,0.78fr)_minmax(0,1.22fr)] md:items-center md:justify-stretch md:gap-12 md:px-0 md:py-16 md:text-left">
                     <div>
-                      <h2 className="text-[2rem] font-semibold leading-tight tracking-tight md:text-5xl">
+                      <h2 className="text-[2rem] font-medium leading-[1.08] tracking-[-0.02em] md:text-[48px]">
                         {q.name}
                       </h2>
                       <div
                         key={`${q.id}-${localStage}`}
-                        className={`mt-3 ${active ? "stage-in" : ""} md:mt-5`}
+                        className={`mt-5 ${active ? "stage-in" : ""} md:mt-6`}
                       >
-                        <h3 className="mx-auto max-w-md text-lg font-medium md:mx-0 md:text-3xl">
+                        <h3 className="mx-auto max-w-md text-lg font-medium leading-snug tracking-[-0.02em] md:mx-0 md:text-[28px]">
                           {local.title}
                         </h3>
-                        <p className="mx-auto mt-2 max-w-md text-sm text-mute md:mt-3 md:text-base">
+                        <p className="mx-auto mt-2 max-w-md text-sm leading-relaxed text-mute md:mt-3 md:text-base">
                           {local.body}
                         </p>
                       </div>
